@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --color-text-100: #f9fafe;
   --color-text-200: #f3f5fd;
@@ -50,4 +54,15 @@
   --color-accent-700: #87431b;
   --color-accent-800: #5a2c12;
   --color-accent-900: #2d1609;
+}
+
+:root {
+  --radius: 0.6rem;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
