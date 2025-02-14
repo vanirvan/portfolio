@@ -1,11 +1,39 @@
 ---
-import Welcome from '~/components/Welcome.astro';
-import Layout from '~/layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { ChevronDownIcon } from "lucide-react";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '~/layouts/Layout.astro';
+import SocialMediaIcons from "~/components/SocialMediaIcons";
+import WorkExperiences from '~/components/WorkExperiences.astro';
+import Projects from '~/components/Projects.astro';
+import Contact from '~/components/Contact.astro';
+import { ScrollProgress } from '~/components/ui/scroll-progress';
+
+import MainPhoto from "~/assets/home/photo.jpg"
 ---
 
 <Layout>
-	<Welcome />
+	<section id="hero" class="relative w-full h-svh">
+		<div class="max-w-3xl mx-auto w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-6 px-6">
+			<div class="relative sm:order-2">
+				<Image src={MainPhoto} alt="Vanirvan" class="rounded-full size-36 object-center object-cover md:size-48" />
+			</div>
+			<div class="flex flex-col gap-2 sm:order-1">
+				<span class="font-medium md:text-xl text-primary-500">Hi there! 👋</span>
+				<h1 class="font-bold text-4xl md:text-5xl">I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-500">Irvan Maulana</h1>
+				<h2 class="font-medium text-text-600 text-sm md:text-base max-w-md mb-4">A Software Engineer, loves to build open source software that would helps a lot of peoples. Javascript and Typescript is my main programming language.</h2>
+				<SocialMediaIcons client:visible />
+			</div>
+		</div>
+
+		<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-default pointer-events-none">
+			<span class="text-xs text-text-500">Scroll Down</span>
+			<ChevronDownIcon className="size-8 text-text-500 animate-bounce" />
+		</div>
+	</section>
+	<WorkExperiences />
+	<Projects />
+	<Contact />
+
+	<ScrollProgress client:load className="from-primary-500 via-secondary-500 to-accent-500" />
 </Layout>

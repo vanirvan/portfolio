@@ -1,0 +1,12 @@
+---
+import ProjectCards from "~/components/ProjectCards";
+---
+<section id="projects" class="relative w-full h-auto my-24">
+  <div class="max-w-3xl mx-auto w-full h-full flex flex-col gap-6 px-6">
+    <div class="flex flex-col items-center mx-auto gap-2">
+      <h1 class="text-center px-2 py-1 rounded-lg bg-text-500 text-background-500">My Projects</h1>
+      <h2 class="text-center text-5xl font-bold">Check out my latest Work</h2>
+    </div>
+    <ProjectCards client:load />
+  </div>
+</section>

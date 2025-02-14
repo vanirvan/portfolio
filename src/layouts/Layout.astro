@@ -18,7 +18,7 @@ const {title, description, image, url} = Astro.props;
   <head>
     <SEO title={title} description={description} image={image} url={url} />
   </head>
-  <body>
+  <body class="relative bg-background-500 text-text-500 font-rubik">
     <slot />
   </body>
 </html>

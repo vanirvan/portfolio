@@ -1,0 +1,25 @@
+---
+import workExperiences from "~/data/work-experience";
+---
+<section id="work-experiences" class="relative w-full h-auto my-24">
+  <div class="max-w-3xl mx-auto w-full h-full flex flex-col gap-6 px-6">
+    <span class="mx-auto px-2 py-1 rounded-lg bg-text-500 text-background-500">Work Experiences</span>
+    { workExperiences.map((we, key) => {
+      return (
+      <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-0">
+        <div class="flex gap-2">
+          { we.companyImageUrl === "" ? <div class="rounded-full size-12 bg-primary-700 flex items-center justify-center text-xl">{ we.company.split("")[0] }</div> : <img src={we.companyImageUrl} alt={we.company} class="rounded-full size-12 object-cover" /> }
+          <div class="flex flex-col">
+            <h1 class="text-lg">{we.company}</h1>
+            <h2 class="text-sm text-text-600">{we.title}</h2>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <div class="w-12 sm:hidden"></div>
+          <span>{we.durationFrom} - {we.durationTo}</span>
+        </div>
+      </div>
+      )
+    }) }
+  </div>
+</section>
