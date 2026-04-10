@@ -1,0 +1,268 @@
+---
+import "~/styles/global.css";
+import { Title, Tag } from "~/components/design/Hero";
+import { ProjectCard } from "~/components/design/ProjectCard";
+import { Marquee } from "~/components/design/Marquee";
+import {
+  ArrowRight,
+  GithubLogo,
+  LinkedinLogo,
+  TwitterLogo,
+  PaperPlaneTilt,
+} from "@phosphor-icons/react";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Irvan Maulana - Portfolio</title>
+  </head>
+  <body
+    class="bg-background text-foreground font-mono antialiased p-0 m-0 selection:bg-primary selection:text-secondary"
+  >
+    <!-- Header/Hero Section -->
+    <main class="grid grid-cols-1 md:grid-cols-4 border-b-8 border-foreground">
+      <div
+        class="md:col-span-3 border-r-0 md:border-r-8 border-foreground p-12 md:p-24 flex flex-col justify-end bg-background min-h-[70vh]"
+      >
+        <div class="mb-12">
+          <Title client:load />
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <Tag primary client:load>Software Engineer</Tag>
+          <Tag client:load>Jakarta, ID</Tag>
+        </div>
+      </div>
+
+      <div class="md:col-span-1 flex flex-col bg-primary/10">
+        <div class="flex-1 p-8 space-y-12">
+          <nav class="space-y-4">
+            <h2
+              class="text-xs font-black uppercase tracking-[0.3em] text-primary"
+            >
+              Menu
+            </h2>
+            <ul class="text-3xl font-black space-y-2 uppercase leading-none">
+              <li
+                class="hover:italic cursor-pointer hover:translate-x-2 transition-transform"
+              >
+                01_Work
+              </li>
+              <li
+                class="hover:italic cursor-pointer hover:translate-x-2 transition-transform"
+              >
+                02_Lab
+              </li>
+              <li
+                class="hover:italic cursor-pointer hover:translate-x-2 transition-transform"
+              >
+                03_About
+              </li>
+              <li
+                class="hover:italic cursor-pointer hover:translate-x-2 transition-transform"
+              >
+                04_Contact
+              </li>
+            </ul>
+          </nav>
+
+          <div class="space-y-4">
+            <h2
+              class="text-xs font-black uppercase tracking-[0.3em] text-primary"
+            >
+              Connect
+            </h2>
+            <div class="flex gap-4">
+              <GithubLogo
+                size={32}
+                weight="bold"
+                class="hover:text-primary cursor-pointer"
+              />
+              <LinkedinLogo
+                size={32}
+                weight="bold"
+                class="hover:text-primary cursor-pointer"
+              />
+              <TwitterLogo
+                size={32}
+                weight="bold"
+                class="hover:text-primary cursor-pointer"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-8 bg-primary text-secondary flex flex-col justify-between h-64 border-t-8 border-foreground"
+        >
+          <h2
+            class="text-4xl font-black uppercase leading-[0.8] tracking-tighter"
+          >
+            Availability:<br />Open for Q3
+          </h2>
+          <div class="flex justify-between items-end">
+            <div
+              class="text-sm font-bold opacity-80 underline decoration-2 underline-offset-4"
+            >
+              irvan@tech.id
+            </div>
+            <PaperPlaneTilt size={48} weight="bold" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <Marquee
+      client:load
+      text="Predictable Architecture // High Performance // Modular Systems // Human Centered Design"
+    />
+
+    <!-- Statement Section -->
+    <section
+      class="grid grid-cols-1 md:grid-cols-2 border-b-8 border-foreground"
+    >
+      <div
+        class="p-12 md:p-24 border-b-8 md:border-b-0 md:border-r-8 border-foreground bg-secondary/20"
+      >
+        <h2
+          class="text-xs font-black uppercase tracking-[0.3em] text-primary mb-8"
+        >
+          Mission_Statement
+        </h2>
+        <p
+          class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight italic"
+        >
+          "I build high-frequency component systems that don't break under
+          pressure."
+        </p>
+      </div>
+      <div class="p-12 md:p-24 flex flex-col justify-center gap-8">
+        <p class="text-xl md:text-2xl font-bold leading-relaxed">
+          Bridging the gap between heavy-duty engineering and intuitive
+          interface design. I specialize in React ecosystem, Astro, and
+          performance-first architectures.
+        </p>
+        <div class="flex gap-2 text-xs font-black uppercase">
+          <span class="px-2 py-1 bg-muted">Fast</span>
+          <span class="px-2 py-1 bg-muted">Responsive</span>
+          <span class="px-2 py-1 bg-muted">Typesafe</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Grid -->
+    <section class="p-4 md:p-8 bg-muted/10">
+      <div class="flex justify-between items-baseline mb-8 px-4">
+        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+          Latest_Projects
+        </h2>
+        <span class="text-sm font-bold opacity-40">Showing (04) of (12)</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <ProjectCard
+          client:load
+          title="Nebula OS"
+          category="System Design"
+          year="2024"
+        />
+        <ProjectCard
+          client:load
+          title="Atlas CRM"
+          category="SaaS Web"
+          year="2023"
+        />
+        <ProjectCard
+          client:load
+          title="Flux Kit"
+          category="Open Source"
+          year="2024"
+        />
+        <ProjectCard
+          client:load
+          title="Zenith"
+          category="Creative"
+          year="2023"
+        />
+      </div>
+    </section>
+
+    <!-- Tech Table -->
+    <section class="border-t-8 border-foreground">
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <div
+          class="p-12 border-b-8 md:border-b-0 md:border-r-8 border-foreground flex items-center"
+        >
+          <h2
+            class="text-5xl font-black uppercase tracking-tighter leading-none"
+          >
+            The<br /><span class="text-primary">Registry</span>
+          </h2>
+        </div>
+        <div class="md:col-span-2 p-0">
+          <div class="grid grid-cols-2">
+            <div class="p-8 border-b-8 border-r-8 border-foreground">
+              <h3 class="text-xs font-black uppercase text-primary mb-2">
+                Engines
+              </h3>
+              <p class="text-2xl font-black uppercase italic">
+                React / Astro / Node
+              </p>
+            </div>
+            <div class="p-8 border-b-8 border-foreground">
+              <h3 class="text-xs font-black uppercase text-primary mb-2">
+                Languages
+              </h3>
+              <p class="text-2xl font-black uppercase italic">
+                TypeScript / Go / Rust
+              </p>
+            </div>
+            <div class="p-8 border-r-8 border-foreground">
+              <h3 class="text-xs font-black uppercase text-primary mb-2">
+                Style
+              </h3>
+              <p class="text-2xl font-black uppercase italic">
+                Tailwind / CSS-in-JS
+              </p>
+            </div>
+            <div class="p-8 border-foreground">
+              <h3 class="text-xs font-black uppercase text-primary mb-2">
+                Tools
+              </h3>
+              <p class="text-2xl font-black uppercase italic">
+                Docker / AWS / Git
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-foreground text-background p-12 md:p-24">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+        <div class="space-y-8">
+          <h2
+            class="text-7xl md:text-[10vw] font-black uppercase tracking-tighter leading-[0.75]"
+          >
+            Let's<br />Talk.
+          </h2>
+          <div
+            class="flex gap-8 text-lg font-bold underline decoration-2 underline-offset-8"
+          >
+            <a href="#" class="hover:text-primary transition-colors">Resume</a>
+            <a href="#" class="hover:text-primary transition-colors">LinkedIn</a
+            >
+            <a href="#" class="hover:text-primary transition-colors">GitHub</a>
+          </div>
+        </div>
+        <div class="md:text-right space-y-2 uppercase font-black">
+          <p class="text-2xl">Irvan Maulana احمد</p>
+          <p class="opacity-40">Jakarta, Indonesia</p>
+          <p class="text-primary mt-4 italic">© 2024 // All Systems Go</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
