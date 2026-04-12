@@ -1,7 +1,275 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import projects from "~/data/projects";
+import { ArrowRightIcon } from "@phosphor-icons/react";
+import { WorkExperienceAccordion } from "~/components/landing-page/WorkExperienceAccordion";
+
+const socials = [
+  { name: "GitHub", url: "https://github.com/vanirvan" },
+  { name: "LinkedIn", url: "https://linkedin.com/in/vanirvan" },
+  { name: "Twitter", url: "https://twitter.com/vanir1812" },
+];
 ---
 
-<Layout>
-  <main></main>
+<Layout
+  title="Irvan Maulana"
+  description="Irvan Maulana - Software Engineer based in Jakarta"
+>
+  <!-- Hero Section -->
+  <section
+    class="relative flex flex-col justify-between p-6 md:p-12 lg:p-16 border-b border-border"
+  >
+    <div
+      class="absolute inset-0 z-0"
+      style={{
+        backgroundImage: `
+        linear-gradient(to right, oklch(0.148 0.004 228.8 / 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, oklch(0.148 0.004 228.8 / 0.1) 1px, transparent 1px)
+      `,
+        backgroundSize: "20px 20px",
+        backgroundPosition: "0 0, 0 0",
+        maskImage: `
+        linear-gradient(to left, black 0%, black 50%, transparent 50%, transparent 100%),
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            )
+      `,
+        WebkitMaskImage: `
+       linear-gradient(to left, black 0%, black 50%, transparent 50%, transparent 100%),
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            )
+      `,
+        maskComposite: "intersect",
+        WebkitMaskComposite: "source-in",
+      }}
+    >
+    </div>
+    <div class="max-w-5xl mx-auto w-full z-10">
+      <header class="flex justify-between items-start w-full">
+        <span class="text-sm font-medium text-muted-foreground"
+          >Jakarta, ID</span
+        >
+        <span
+          class="text-sm font-semibold px-3 py-1 bg-primary text-primary-foreground"
+          >Available for work</span
+        >
+      </header>
+
+      <div class="space-y-6 mb-10">
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight"
+        >
+          Irvan<br />Maulana
+        </h1>
+
+        <p
+          class="text-xl md:text-2xl max-w-xl text-muted-foreground leading-relaxed"
+        >
+          Software engineer focused on building performant web applications. I
+          turn complex problems into clean, working code.
+        </p>
+      </div>
+
+      <footer
+        class="flex flex-col md:flex-row gap-8 md:items-end md:justify-between"
+      >
+        <div class="flex gap-6">
+          {
+            socials.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-lg font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+              >
+                {social.name}
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="flex flex-col gap-1 items-start md:items-end">
+          <span
+            class="text-sm font-semibold text-muted-foreground uppercase tracking-widest"
+            >Send email to</span
+          >
+          <a
+            href="mailto:vanir1812@gmail.com"
+            class="group relative w-fit overflow-hidden rounded-md px-3 py-1 -mx-3 md:mx-0 md:-mr-3 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+          >
+            <span
+              class="absolute inset-0 bg-primary origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"
+            ></span>
+            <span
+              class="relative z-10 transition-colors duration-300 group-hover:text-primary-foreground"
+              >vanir1812@gmail.com</span
+            >
+          </a>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section class="p-6 md:p-12 lg:p-16 border-b border-border">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Work Experience</h2>
+
+      <WorkExperienceAccordion client:load />
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="p-6 md:p-12 lg:p-16 border-b border-border">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Selected Work</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          projects.map((project) => (
+            <article class="group relative flex flex-col justify-between space-y-5 rounded-2xl border border-border/40 bg-background/50 p-5 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:bg-muted/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.04)]">
+              <a
+                href={project.liveUrl || project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block aspect-video w-full overflow-hidden rounded-xl border border-border/50 bg-muted relative"
+              >
+                {project.imageUrl ? (
+                  <img
+                    src={project.imageUrl}
+                    alt={project.name}
+                    class="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="flex h-full w-full items-center justify-center bg-muted transition-colors duration-500 group-hover:bg-muted/80">
+                    <span class="text-sm font-medium tracking-widest text-muted-foreground uppercase">
+                      {project.name}
+                    </span>
+                  </div>
+                )}
+                {/* Arrow icon that fades and slides in on the bottom right of the image */}
+                <div class="absolute bottom-3 right-3 flex h-8 w-8 translate-y-2 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <ArrowRightIcon
+                    className="transition-transform duration-500 group-hover:-rotate-45"
+                    size={16}
+                  />
+                </div>
+              </a>
+
+              <div class="flex w-full flex-col gap-3 py-1 mt-auto z-10">
+                <h3 class="text-xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+                  {project.name}
+                </h3>
+
+                <p class="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
+
+                <div class="flex items-center gap-4 pt-2">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <span>Live Demo</span>
+                      <span class="inline-block transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:-rotate-45">
+                        →
+                      </span>
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <span>Repository</span>
+                      <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                        →
+                      </span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section
+    class="relative selection:bg-secondary selection:text-secondary-foreground p-6 md:p-12 lg:p-16 bg-primary text-primary-foreground"
+  >
+    <div
+      class="absolute inset-0 z-0 pointer-events-none"
+      style={{
+        backgroundImage: `
+        repeating-linear-gradient(0deg, transparent, transparent 20px, oklch(0.21 0.006 285.885 / 0.1) 20px, oklch(0.21 0.006 285.885 / 0.1) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 30px, oklch(0.21 0.006 285.885 / 0.1) 30px, oklch(0.21 0.006 285.885 / 0.1) 31px),
+        repeating-linear-gradient(60deg, transparent, transparent 40px, oklch(0.21 0.006 285.885 / 0.1) 40px, oklch(0.21 0.006 285.885 / 0.1) 41px),
+        repeating-linear-gradient(150deg, transparent, transparent 35px, oklch(0.21 0.006 285.885 / 0.1) 35px, oklch(0.21 0.006 285.885 / 0.1) 36px)
+      `,
+      }}
+    >
+    </div>
+    <div
+      class="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+    >
+      <div>
+        <h2 class="text-4xl md:text-6xl font-bold leading-tight z-10">
+          Let's<br />work<br />together
+        </h2>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1 items-start z-10">
+          <span
+            class="text-sm font-semibold text-primary-foreground/80 uppercase tracking-widest"
+            >Send email to</span
+          >
+          <a
+            href="mailto:vanir1812@gmail.com"
+            class="group relative w-fit overflow-hidden rounded-md px-3 py-1 -mx-3 text-xl font-medium focus:outline-none focus:ring-2 focus:ring-background focus:ring-offset-2 focus:ring-offset-primary"
+          >
+            <span
+              class="absolute inset-0 bg-background origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"
+            ></span>
+            <span
+              class="relative z-10 transition-colors duration-300 group-hover:text-foreground"
+              >vanir1812@gmail.com</span
+            >
+          </a>
+        </div>
+        <p class="opacity-80 z-10">Based in Jakarta, Indonesia</p>
+      </div>
+    </div>
+  </section>
 </Layout>
