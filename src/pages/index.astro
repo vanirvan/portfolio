@@ -1,13 +1,26 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import projects from "~/data/projects";
-import { ArrowRightIcon } from "@phosphor-icons/react";
+import {
+  ArrowRightIcon,
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  TwitterLogoIcon,
+} from "@phosphor-icons/react";
 import { WorkExperienceAccordion } from "~/components/landing-page/WorkExperienceAccordion";
 
 const socials = [
-  { name: "GitHub", url: "https://github.com/vanirvan" },
-  { name: "LinkedIn", url: "https://linkedin.com/in/vanirvan" },
-  { name: "Twitter", url: "https://twitter.com/vanir1812" },
+  { name: "GitHub", url: "https://github.com/vanirvan", icon: GithubLogoIcon },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/vanirvan",
+    icon: LinkedinLogoIcon,
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/vanir1812",
+    icon: TwitterLogoIcon,
+  },
 ];
 ---
 
@@ -98,16 +111,25 @@ const socials = [
       >
         <div class="flex gap-6">
           {
-            socials.map((social) => (
-              <a
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-lg font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-              >
-                {social.name}
-              </a>
-            ))
+            socials.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group relative flex items-center justify-center overflow-hidden rounded-md px-3 py-1 -mx-3 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+                >
+                  <span class="absolute inset-0 bg-primary origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 z-0" />
+                  <div class="relative z-10 flex items-center transition-colors duration-300 group-hover:text-primary-foreground">
+                    <div class="flex items-center justify-center w-0 opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:w-5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:mr-1.5 overflow-hidden">
+                      <Icon size={18} weight="bold" />
+                    </div>
+                    <span>{social.name}</span>
+                  </div>
+                </a>
+              );
+            })
           }
         </div>
 
