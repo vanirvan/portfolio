@@ -1,6 +1,7 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import projects from "~/data/projects";
+import funProjects from "~/data/fun-projectst.ts";
 import {
   ArrowRightIcon,
   FileArrowDownIcon,
@@ -173,12 +174,15 @@ const socials = [
   <!-- Projects Section -->
   <section class="p-6 md:p-12 lg:p-16 border-b border-border">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12">Selected Work</h2>
-
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Personal Projects</h2>
+      <h3 class="text-sm md:text-md font-medium text-muted-foreground mb-12">
+        Projects i made in a free time to upgrade my skills and explore
+        different stacks.
+      </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           projects.map((project) => (
-            <article class="group relative flex flex-col justify-between space-y-5 rounded-2xl border border-border/40 bg-background/50 p-5 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:bg-muted/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.04)]">
+            <article class="group relative flex flex-col gap-3 rounded-2xl border border-border/40 bg-background/50 p-5 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:bg-muted/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.04)]">
               <a
                 href={project.liveUrl || project.githubUrl}
                 target="_blank"
@@ -198,7 +202,6 @@ const socials = [
                     </span>
                   </div>
                 )}
-                {/* Arrow icon that fades and slides in on the bottom right of the image */}
                 <div class="absolute bottom-3 right-3 flex h-8 w-8 translate-y-2 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                   <ArrowRightIcon
                     className="transition-transform duration-500 group-hover:-rotate-45"
@@ -207,43 +210,111 @@ const socials = [
                 </div>
               </a>
 
-              <div class="flex w-full flex-col gap-3 py-1 mt-auto z-10">
-                <h3 class="text-xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
-                  {project.name}
-                </h3>
+              <h3 class="text-xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+                {project.name}
+              </h3>
 
-                <p class="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
-                </p>
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                {project.description}
+              </p>
 
-                <div class="flex items-center gap-4 pt-2">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      <span>Live Demo</span>
-                      <span class="inline-block transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:-rotate-45">
-                        →
-                      </span>
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      <span>Repository</span>
-                      <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
-                        →
-                      </span>
-                    </a>
-                  )}
-                </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                {project.tags.map((tag) => (
+                  <span class="text-xs font-medium px-2 py-1 rounded-md bg-primary text-primary-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex items-center gap-4 pt-2">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span>Live Demo</span>
+                    <span class="inline-block transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:-rotate-45">
+                      →
+                    </span>
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span>Repository</span>
+                    <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                      →
+                    </span>
+                  </a>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto mt-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Fun Projects / Experiments
+      </h2>
+      <h3 class="text-sm md:text-md font-medium text-muted-foreground mb-12">
+        Things I built for fun, or to try out new tech stack in a limited scope.
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          funProjects.map((fp) => (
+            <article class="group relative flex flex-col gap-3 rounded-2xl border border-border/40 bg-background/50 p-5 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:bg-muted/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.04)]">
+              <h3 class="text-xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+                {fp.name}
+              </h3>
+
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                {fp.description}
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                {fp.tags.map((tag) => (
+                  <span class="text-xs font-medium px-2 py-1 rounded-md bg-primary text-primary-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex items-center gap-4 pt-2">
+                {fp.liveUrl && (
+                  <a
+                    href={fp.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span>Live Demo</span>
+                    <span class="inline-block transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:-rotate-45">
+                      →
+                    </span>
+                  </a>
+                )}
+                {fp.githubUrl && (
+                  <a
+                    href={fp.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span>Repository</span>
+                    <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                      →
+                    </span>
+                  </a>
+                )}
               </div>
             </article>
           ))
