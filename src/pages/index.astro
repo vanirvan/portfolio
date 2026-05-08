@@ -3,6 +3,7 @@ import Layout from "~/layouts/Layout.astro";
 import projects from "~/data/projects";
 import {
   ArrowRightIcon,
+  FileArrowDownIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
   TwitterLogoIcon,
@@ -20,6 +21,11 @@ const socials = [
     name: "Twitter",
     url: "https://twitter.com/van_irvan678",
     icon: TwitterLogoIcon,
+  },
+  {
+    name: "Resume",
+    url: "/assets/resume.pdf",
+    icon: FileArrowDownIcon,
   },
 ];
 ---
@@ -109,7 +115,7 @@ const socials = [
       <footer
         class="flex flex-col md:flex-row gap-8 md:items-end md:justify-between"
       >
-        <div class="flex gap-6">
+        <div class="flex flex-wrap gap-6">
           {
             socials.map((social) => {
               const Icon = social.icon;
