@@ -11,7 +11,7 @@ type WorkExperience = {
 
 const workExperiences: WorkExperience[] = [
   {
-    company: "SABAKO",
+    company: "Sabako Kreativ Digital",
     location: "South Jakarta, Indonesia",
     title: "Frontend Web & Mobile Developer",
     durationFrom: "Nov 2025",
@@ -35,7 +35,7 @@ const workExperiences: WorkExperience[] = [
     ],
   },
   {
-    company: "Indonesia's Corruption Eradication Commission (KPK)",
+    company: "Sabako Kreativ Digital",
     location: "Indonesia",
     title: "Frontend Developer",
     durationFrom: "Jul 2025",
